@@ -1,0 +1,11 @@
+li{
+
+    width: 90%;
+}
+#deleteButton{
+    background-color:rgb(247, 8, 8);
+    border: none;
+}
+#deleteButton:hover{
+    background-color:rgb(124, 3, 3);
+}
