@@ -27,9 +27,22 @@ input:focus{
     font-size: 1.5rem;
     margin: 4px 2px;
     cursor: pointer;
+    border-radius: 13px;
 }
 #showTodos{
     display: flex;
     justify-content: center;
     align-items: center;
+}
+#sortIcon{
+width: 40px;
+border: 1px solid black;
+border-radius: 10px;
+}
+#sortIconDiv{
+    
+    display: flex;
+    justify-content: end;
+    margin-right: 10px;
+    margin-top: 5px;
 }

@@ -1,5 +1,6 @@
 import React,{useState,useEffect} from 'react'
 import Todo from './Todo';
+import sort from '../Assets/sort.png';
 import './Todos.css'
 const Todos = () => {
     let initTodo;
@@ -12,6 +13,13 @@ const Todos = () => {
     const [checkEmpty,setCheckEmpty]=useState(false);
     const [inputTodo,setInputTodo]=useState("+ Add Todo here.");
     const [showTodos,setShowTodos]=useState(initTodo );
+    const SortHandler=()=>{
+     let initTodo = JSON.parse(localStorage.getItem("todos"));
+     initTodo.reverse();
+     setShowTodos(initTodo)
+      localStorage.setItem("todos", JSON.stringify(initTodo));
+
+    }
     const removeplaceHolder=()=>{
         if(flag===false){
             setInputTodo(" ")
@@ -44,6 +52,8 @@ const Todos = () => {
       }, [showTodos]);
       return (
         <div>
+         
+         <div id="sortIconDiv"> <img src={sort} onClick={SortHandler}  id="sortIcon"/></div>
          <br />
             <div className="centerInput">
             <input type="text" id="inputTodo" value={inputTodo}  onClick={removeplaceHolder} onChange={onChangeHandler}/>
