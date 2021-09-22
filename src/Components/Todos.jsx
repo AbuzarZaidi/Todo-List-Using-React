@@ -2,6 +2,7 @@ import React,{useState,useEffect} from 'react'
 import Todo from './Todo';
 import sort from '../Assets/sort.png';
 import './Todos.css'
+import Tooltip from '@mui/material/Tooltip';
 const Todos = () => {
     let initTodo;
   if (localStorage.getItem("todos") === null) {
@@ -63,11 +64,16 @@ const Todos = () => {
       return (
         <div>
          
-         <div id="sortIconDiv"> <img src={sort} onClick={SortHandler}  id="sortIcon"/></div>
+         <div id="sortIconDiv">  
+         <img src={sort} onClick={SortHandler}  id="sortIcon"/> 
+         </div>
+         
          <br />
             <div className="centerInput">
             <input type="text" id="inputTodo" value={inputTodo}  onClick={removeplaceHolder} onChange={onChangeHandler}/>
+            <Tooltip title="Add ToDo">
             <button id="addButton" onClick={onClickHandler}>+</button>
+            </Tooltip>
             </div>
             <br />
             <div>
