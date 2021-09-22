@@ -33,7 +33,10 @@ const Todos = () => {
     }
     const onClickHandler=()=>{
       if(checkEmpty===true){
-        setShowTodos([...showTodos, inputTodo]);
+        let todoChecked=0;
+        let data={todoChecked,inputTodo};
+         setShowTodos([...showTodos, data]);
+         console.log(data);
       }
       setCheckEmpty(false);
         setInputTodo("+ Add Todo here.");
@@ -47,6 +50,13 @@ const Todos = () => {
         })
         localStorage.setItem("todos", JSON.stringify(showTodos));
     }
+    const completeHandler=(id)=>{
+ let checkValue = JSON.parse(localStorage.getItem("todos"));
+ checkValue[id].todoChecked=1;
+ setShowTodos(checkValue);
+      localStorage.setItem("todos", JSON.stringify(showTodos));
+  }
+ 
     useEffect(() => {
         localStorage.setItem("todos", JSON.stringify(showTodos));
       }, [showTodos]);
@@ -63,7 +73,7 @@ const Todos = () => {
             <div>
             <ul className="list-group list-group-numbered" id="showTodos">
                {showTodos.map((arrEle,index)=>{
-    return( <Todo todos={arrEle} deleteTodo={deleteHandler} id={index} key={index} />)
+    return( <Todo todos={arrEle} completeTodo={completeHandler} deleteTodo={deleteHandler} id={index} key={index} />)
                })}
                 </ul>
             </div>
