@@ -65,7 +65,9 @@ const Todos = () => {
         <div>
          
          <div id="sortIconDiv">  
-         <img src={sort} onClick={SortHandler}  id="sortIcon"/> 
+         <Tooltip title="Sort">
+       <img src={sort} onClick={SortHandler}  id="sortIcon"/>
+       </Tooltip>
          </div>
          
          <br />
